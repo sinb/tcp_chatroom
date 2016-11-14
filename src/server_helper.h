@@ -16,5 +16,5 @@ pthread_mutex_t mutex;
 void error_handling(char *message);
 void *server_handle_clnt(void *arg);
 void server_send_msg_to_all(char *msg, int len);
-
+char* get_client_number(void);
 #endif //TCP_CHATROOM_HELPER_H

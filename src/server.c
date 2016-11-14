@@ -43,6 +43,17 @@ int main(int argc, char *argv[]) {
         pthread_create(&t_id, NULL, server_handle_clnt, (void *) &clnt_sock);
         pthread_detach(t_id);
         printf("Client IP:%s \n", inet_ntoa(clnt_adr.sin_addr));
+
+        // when no client, exit
+        char* m = get_client_number();
+        printf("number %s\n", m);
+
+        char msg[BUFF_SIZE];
+        fgets(msg, BUFF_SIZE, stdin);
+        if( !strcmp(msg, "q\n") || !strcmp(msg, "Q\n") ){
+            fputs("Quit!\n", stderr);
+            break;
+        }
     }
     close(serv_sock);
     return 0;
